@@ -6,15 +6,17 @@ import config from "../config";
 import water from "../canvas/water";
 import wall from "../canvas/wall";
 import steel from "../canvas/steel";
+import tank from "../canvas/tank";
 
 export default class extends modelAbstract implements IModel {
+  canvas: ICanvas = tank;
   name: string = "tank";
   render(): void {
     // this.randomDirection();
     // this.draw();
     this.move();
 
-    // //增加碰撞后向下走的概率
+    //增加碰撞后向下走的概率
     // if (_.random(20) == 1) {
     //   this.direction = directionEnum.bottom;
     // }
@@ -63,10 +65,10 @@ export default class extends modelAbstract implements IModel {
       y < 0 ||
       y + this.height > config.canvas.height
     ) {
-      //增加碰撞后向下走的概率
-      if (_.random(20) == 1) {
-        this.direction = directionEnum.bottom;
-      }
+      // //增加碰撞后向下走的概率
+      // if (_.random(20) == 1) {
+      //   this.direction = directionEnum.bottom;
+      // }
       return true;
     }
 
