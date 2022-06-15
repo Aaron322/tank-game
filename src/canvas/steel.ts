@@ -2,7 +2,7 @@ import config from "../config";
 import canvasAbstract from "./canvasAbstract";
 import model from "../model/steel";
 
-class steel extends canvasAbstract implements ICanvas {
+export default new (class extends canvasAbstract implements ICanvas {
   num(): number {
     return config.steel.num;
   }
@@ -11,8 +11,6 @@ class steel extends canvasAbstract implements ICanvas {
   }
   render(): void {
     super.createModels();
-    super.rendModels();
+    super.renderModels();
   }
-}
-
-export default new steel();
+})("steel");

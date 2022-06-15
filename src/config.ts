@@ -6,32 +6,33 @@ import tankLeft from "./static/images/tank/left.gif";
 import tankRight from "./static/images/tank/right.gif";
 import tankTop from "./static/images/tank/top.gif";
 import tankBottom from "./static/images/tank/bottom.gif";
+import bullet from "./static/images/bullet/bullet.jpg";
 
 export default {
   canvas: {
-    width: 900,
-    height: 500,
+    width: 1340,
+    height: 700,
   },
-  tankSpeed: 20,
+  tankSpeed: 35,
 
   model: {
     width: 30,
     height: 30,
   },
   straw: {
-    num: 60,
+    num: 90,
   },
   wall: {
-    num: 50,
+    num: 80,
   },
   steel: {
-    num: 50,
+    num: 80,
   },
   tank: {
     num: 20,
   },
   water: {
-    num: 20,
+    num: 90,
   },
   images: {
     straw,
@@ -42,5 +43,6 @@ export default {
     tankLeft,
     tankRight,
     tankTop,
+    bullet,
   },
 };

@@ -1,3 +1,4 @@
+import { keys } from "lodash";
 import config from "../config";
 import { directionEnum } from "../enum/directionEnum";
 
@@ -6,7 +7,7 @@ export default abstract class modelAbstract {
   abstract name: string;
   abstract canvas: ICanvas;
   abstract image(): HTMLImageElement;
-  protected direction: directionEnum = directionEnum.top;
+  public direction: directionEnum = directionEnum.top;
   public width = config.model.width;
   public height = config.model.height;
 
@@ -31,25 +32,29 @@ export default abstract class modelAbstract {
     );
   }
 
-  // //判断是否碰撞
-  // protected isTouch(x: number, y: number): boolean {
-  //   if (
-  //     x < 0 ||
-  //     x + this.width > config.canvas.width ||
-  //     y < 0 ||
-  //     y + this.height > config.canvas.height
-  //   ) {
-  //     return true;
-  //   }
-  //   const models = [...water.models, ...wall.models, ...steel.models];
-  //   return models.some((model) => {
-  //     const state =
-  //       x + this.width <= model.x ||
-  //       x >= model.x + model.width ||
-  //       y + this.height <= model.y ||
-  //       y >= model.y + model.height;
+  public destory() {
+    this.canvas.removeModel(this);
+    this.canvas.renderModels();
+  }
 
-  //     return !state;
-  //   });
-  // }
+  protected blast(model: IModel) {
+    Array(...Array(8).keys()).reduce((promise, index) => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const img = new Image();
+          img.src = `/src/static/images/blasts/blast${index}.gif`;
+          img.onload = () => {
+            this.canvas.ctx.drawImage(
+              img,
+              model.x,
+              model.y,
+              model.width,
+              model.height
+            );
+            resolve(promise);
+          };
+        }, 50);
+      });
+    }, Promise.resolve());
+  }
 }

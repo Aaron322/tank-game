@@ -2,8 +2,8 @@ import config from "../config";
 import canvasAbstract from "./canvasAbstract";
 import model from "../model/tank";
 import position from "../service/position";
-2;
-class tank extends canvasAbstract implements ICanvas {
+
+export default new (class tank extends canvasAbstract implements ICanvas {
   num(): number {
     return config.tank.num;
   }
@@ -23,7 +23,7 @@ class tank extends canvasAbstract implements ICanvas {
   protected rendModels() {
     this.ctx.clearRect(0, 0, config.canvas.width, config.canvas.height);
 
-    super.rendModels();
+    super.renderModels();
     // this.models.forEach((model) => {
     //   model.render();
     //   this.canvas.drawImage(
@@ -45,6 +45,4 @@ class tank extends canvasAbstract implements ICanvas {
       this.models.push(instance);
     }
   }
-}
-
-export default new tank();
+})("tank");

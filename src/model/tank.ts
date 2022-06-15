@@ -3,10 +3,11 @@ import { image } from "../service/image";
 import { directionEnum } from "../enum/directionEnum";
 import _ from "lodash";
 import config from "../config";
-import water from "../canvas/water";
-import wall from "../canvas/wall";
-import steel from "../canvas/steel";
+// import water from "../canvas/water";
+// import wall from "../canvas/wall";
+// import steel from "../canvas/steel";
 import tank from "../canvas/tank";
+import util from "../util";
 
 export default class extends modelAbstract implements IModel {
   canvas: ICanvas = tank;
@@ -16,7 +17,7 @@ export default class extends modelAbstract implements IModel {
     // this.draw();
     this.move();
 
-    //增加碰撞后向下走的概率
+    // 增加碰撞后向下走的概率
     // if (_.random(20) == 1) {
     //   this.direction = directionEnum.bottom;
     // }
@@ -45,7 +46,7 @@ export default class extends modelAbstract implements IModel {
           x++;
           break;
       }
-      if (this.isTouch(x, y) === true) {
+      if (util.isModelTouch(x, y) || util.isCanvasTouch(x, y)) {
         this.randomDirection();
       } else {
         this.x = x;
@@ -54,34 +55,5 @@ export default class extends modelAbstract implements IModel {
       }
     }
     super.draw();
-  }
-
-  //碰撞检测
-  //边缘碰撞
-  protected isTouch(x: number, y: number): boolean {
-    if (
-      x < 0 ||
-      x + this.width > config.canvas.width ||
-      y < 0 ||
-      y + this.height > config.canvas.height
-    ) {
-      // //增加碰撞后向下走的概率
-      // if (_.random(20) == 1) {
-      //   this.direction = directionEnum.bottom;
-      // }
-      return true;
-    }
-
-    //模型碰撞
-    const models = [...water.models, ...wall.models, ...steel.models];
-    return models.some((model) => {
-      const state =
-        x + this.width <= model.x ||
-        x >= model.x + model.width ||
-        y + this.height <= model.y ||
-        y >= model.y + model.height;
-
-      return !state;
-    });
   }
 }
