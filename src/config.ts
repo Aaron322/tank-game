@@ -7,6 +7,11 @@ import tankRight from "./static/images/tank/right.gif";
 import tankTop from "./static/images/tank/top.gif";
 import tankBottom from "./static/images/tank/bottom.gif";
 import bullet from "./static/images/bullet/bullet.jpg";
+import boss from "./static/images/boss/boss.png";
+import playerLeft from "./static/images/player/left.gif";
+import playerRight from "./static/images/player/right.gif";
+import playerTop from "./static/images/player/top.gif";
+import playerBottom from "./static/images/player/bottom.gif";
 
 export default {
   canvas: {
@@ -44,5 +49,10 @@ export default {
     tankRight,
     tankTop,
     bullet,
+    boss,
+    playerBottom,
+    playerLeft,
+    playerRight,
+    playerTop,
   },
 };

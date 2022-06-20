@@ -6,6 +6,7 @@ import { directionEnum } from "../enum/directionEnum";
 import util from "../util";
 import wall from "../canvas/wall";
 import steel from "../canvas/steel";
+import boss from "../canvas/boss";
 
 export default class extends modelAbstract implements IModel {
   canvas: ICanvas = bullet;
@@ -41,6 +42,7 @@ export default class extends modelAbstract implements IModel {
     const touchModel = util.isModelTouch(x, y, 2, 2, [
       ...wall.models,
       ...steel.models,
+      ...boss.models,
     ]);
     if (util.isCanvasTouch(x, y, 2, 2)) {
       this.destory();

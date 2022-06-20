@@ -3,9 +3,6 @@ import { image } from "../service/image";
 import { directionEnum } from "../enum/directionEnum";
 import _ from "lodash";
 import config from "../config";
-// import water from "../canvas/water";
-// import wall from "../canvas/wall";
-// import steel from "../canvas/steel";
 import tank from "../canvas/tank";
 import util from "../util";
 
