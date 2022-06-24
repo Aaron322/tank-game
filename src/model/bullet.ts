@@ -26,16 +26,16 @@ export default class extends modelAbstract implements IModel {
     let y = this.y;
     switch (this.direction) {
       case directionEnum.top:
-        y -= 2;
+        y -= 5;
         break;
       case directionEnum.right:
-        x += 2;
+        x += 5;
         break;
       case directionEnum.bottom:
-        y += 2;
+        y += 5;
         break;
       case directionEnum.left:
-        x -= 2;
+        x -= 5;
         break;
     }
     //碰撞检测

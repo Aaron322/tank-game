@@ -2,12 +2,14 @@ import straw from "./static/images/straw/straw.png";
 import wall from "./static/images/wall/wall.gif";
 import water from "./static/images/water/water.gif";
 import steel from "./static/images/wall/steels.gif";
+
 import tankLeft from "./static/images/tank/left.gif";
 import tankRight from "./static/images/tank/right.gif";
 import tankTop from "./static/images/tank/top.gif";
 import tankBottom from "./static/images/tank/bottom.gif";
 import bullet from "./static/images/bullet/bullet.jpg";
 import boss from "./static/images/boss/boss.png";
+
 import playerLeft from "./static/images/player/left.gif";
 import playerRight from "./static/images/player/right.gif";
 import playerTop from "./static/images/player/top.gif";
@@ -18,7 +20,7 @@ export default {
     width: 1340,
     height: 700,
   },
-  tankSpeed: 35,
+  tankSpeed: 30,
 
   model: {
     width: 30,

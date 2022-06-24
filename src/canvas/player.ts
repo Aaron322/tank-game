@@ -1,5 +1,6 @@
 import canvasAbstract from "./canvasAbstract";
 import model from "../model/player";
+import config from "../config";
 
 export default new (class extends canvasAbstract implements ICanvas {
   num(): number {
@@ -8,8 +9,22 @@ export default new (class extends canvasAbstract implements ICanvas {
   model(): ModelConstructor {
     return model;
   }
+
   render(): void {
-    super.createModels();
+    this.createModels();
     super.renderModels();
+  }
+
+  //生成模型实例
+  protected createModels() {
+    const cw = config.canvas.width;
+    const ch = config.canvas.height;
+    const mw = config.model.width;
+    const mh = config.model.height;
+    [{ x: cw / 2 + mw * 4, y: ch - mh }].forEach((position) => {
+      const model = this.model() as ModelConstructor;
+      const instance = new model(position.x, position.y);
+      this.models.push(instance);
+    });
   }
 })("player");
